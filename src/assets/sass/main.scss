@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    min-height: 100vh;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+.wrapper {
+    max-width: 70em;
+    width: 100%;
+    padding: 0 2em;
+    margin: 0 auto;
+}
+
+.task-form {
+    display: flex;
+    position: relative;
+    margin: 25px 0;
+    &__input {
+        flex-grow: 1;
+        background-color: rgba(255,255,255,.15);
+        border: 0;
+        color: #0B5563;
+        padding: 15px;
+        font-size: 20px;
+        border-bottom: 5px solid #fff;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        transition: all .3s ease-in-out;
+        &:active,
+        &:focus {
+            outline: 0;
+            background-color: rgba(255,255,255,.6);
+        }
+        &::-webkit-input-placeholder {
+            color: #0B5563;
+        }
+    }
+    &__submit {
+        border: 0;
+        background-color: white;
+        padding: 20px;
+        font-size: 20px;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        cursor: pointer;
+        &:active,
+        &:focus {
+            outline: none;
+        }
+        i {
+            transition: all .2s ease-in;
+            color: #8fd3f4;
+        }
+        &:hover i {
+            color: #84fab0;
+            transform: rotate(90deg)
+        }
+    }
+}
+
+.status-bar {
+    font-size: 20px;
+    color: white;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1803921568627451);
+    margin-bottom: 25px;
+}
+
+.tasks {
+    position: relative;
+
+    &__item {
+        display: flex;
+        width: 100%;
+        box-sizing: border-box;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 3px;
+        margin-bottom: 7px;
+        padding: 0 25px;
+        box-shadow: 0px 2px 2px rgba(0,0,0,.2);
+        transition: all 300ms ease-in;
+
+        &__title {
+            flex-grow: 1;
+            color: #2A4747;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        &--done {
+            background-color: rgba(255,255,255,.6);
+            .tasks__item__title {
+                text-decoration: line-through;
+            }
+        }
+
+        &__button {
+            font-size: 20px;
+            margin: 14px 15px;
+            text-align: center;
+            color: lightgray;
+            &--status {
+                transition: all .2s ease-in-out;
+                transform-origin: center center;
+                color: limegreen;
+            }
+        }
+    }
+}
+
+// Rotate animation
+.rotate {
+    &-enter-active,
+    &-leave-active {
+        transition: transform .3s;
+    }
+
+    &-enter,
+    &-leave-to {
+        transform: rotateY(90deg);
+    }
+}
+
+.simple-fade {
+    &-enter-active,
+    &-leave-active {
+        transition: opacity .3s;
+    }
+
+    &-enter,
+    &-leave-to {
+        opacity: 0;
+    }
+}
+
+// Fade list animation
+.fade {
+    backface-visibility: hidden;
+    z-index: 1;
+    &-move {
+        transition: all 600ms ease-in-out 50ms;
+    }
+
+    &-enter-active {
+        transition: all 300ms ease-out;
+    }
+
+    &-leave-active {
+        transition: all 300ms ease-in;
+        position: absolute;
+        z-index: 0;
+    }
+
+    &-enter,
+    &-leave-to {
+        opacity: 0;
+    }
+}
