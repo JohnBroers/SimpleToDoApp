@@ -1,12 +1,12 @@
 import Vue from 'vue'
+import App from './App.vue'
 import VueFire from 'vuefire'
 import './firebase'
-import './assets/sass/main.scss'
-import App from './App.vue'
 
-Vue.use(VueFire);
+Vue.use(VueFire)
+
+Vue.config.productionTip = false
 
 new Vue({
-  el: '#app',
-  render: h => h(App),
-})
+  render: h => h(App)
+}).$mount('#app')
